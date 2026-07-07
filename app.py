@@ -10,19 +10,16 @@ DATA_FILE = "urls.json"
 
 
 def generate_code(length=6):
-    """Generate a random alphanumeric short code."""
     characters = string.ascii_letters + string.digits
     return "".join(random.choice(characters) for _ in range(length))
 
 
 def load_urls():
-    """Load all shortened URLs from the JSON file."""
     with open(DATA_FILE, "r") as file:
         return json.load(file)
 
 
 def save_urls(data):
-    """Save all shortened URLs to the JSON file."""
     with open(DATA_FILE, "w") as file:
         json.dump(data, file, indent=4)
 
