@@ -73,6 +73,16 @@ def redirect_to_url(code):
 
     return redirect(urls[code]["url"])
 
+@app.route("/dashboard")
+def dashboard():
+
+    urls = load_urls()
+
+    return render_template(
+        "dashboard.html",
+        urls=urls
+    )
+
 
 if __name__ == "__main__":
     app.run(debug=True)

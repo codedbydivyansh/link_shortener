@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>📊 Dashboard</h1>
+
+    {% if urls %}
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Short Code</th>
+                <th>Original URL</th>
+                <th>Clicks</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for code, data in urls.items() %}
+
+            <tr>
+
+                <td>
+                    <a href="/s/{{ code }}">
+                        {{ code }}
+                    </a>
+                </td>
+
+                <td>
+                    <a href="{{ data.url }}" target="_blank">
+                        {{ data.url }}
+                    </a>
+                </td>
+
+                <td>
+                    {{ data.clicks }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+    {% else %}
+
+    <p>No shortened URLs yet.</p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
