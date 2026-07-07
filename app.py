@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 import json
 import random
@@ -58,6 +58,20 @@ def shorten():
         "index.html",
         short_link=short_link
     )
+    
+@app.route("/s/<code>")
+def redirect_to_url(code):
+
+    urls = load_urls()
+
+    if code not in urls:
+        return render_template("404.html"), 404
+
+    urls[code]["clicks"] += 1
+
+    save_urls(urls)
+
+    return redirect(urls[code]["url"])
 
 
 if __name__ == "__main__":
