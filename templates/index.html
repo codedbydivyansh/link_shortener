@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+Link Shortener
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>🔗 Link Shortener</h1>
+
+    <p>
+        Convert long URLs into short, shareable links.
+    </p>
+
+    <form>
+
+        <input
+            type="text"
+            placeholder="https://example.com">
+
+        <button type="submit">
+            Shorten URL
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
