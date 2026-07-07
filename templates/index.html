@@ -14,18 +14,33 @@ Link Shortener
         Convert long URLs into short, shareable links.
     </p>
 
-    <form>
+<form action="/shorten" method="POST">
 
-        <input
-            type="text"
-            placeholder="https://example.com">
+    <input
+        type="text"
+        name="url"
+        placeholder="https://example.com"
+        required>
 
-        <button type="submit">
-            Shorten URL
-        </button>
+    <button type="submit">
+        Shorten URL
+    </button>
 
-    </form>
+</form>
 
+{% if short_link %}
+
+    <div class="result">
+
+        <h3>Your Short Link</h3>
+
+        <a href="{{ short_link }}" target="_blank">
+            {{ short_link }}
+        </a>
+    </div>
+
+    {% endif %}
+    
 </div>
 
 {% endblock %}
